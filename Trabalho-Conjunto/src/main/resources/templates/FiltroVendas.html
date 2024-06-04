@@ -122,8 +122,7 @@
         rows.forEach(row => {
             const dateStr = row.cells[2].textContent;
             const dateParts = dateStr.split('-');
-            // O mês em JavaScript é baseado em zero, então subtraímos 1
-            const date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+            const date = new Date(dateParts[0], parseInt(dateParts[1]) - 1, dateParts[2]);
             if ((data_inicio && date <= data_inicio) || (data_fim && date >= data_fim)) {
                 row.style.display = 'none';
             } else {
@@ -131,8 +130,6 @@
             }
         });
     }
-
-    // Chama a função fetchData ao carregar a página
     window.onload = fetchData;
 </script>
 </body>
